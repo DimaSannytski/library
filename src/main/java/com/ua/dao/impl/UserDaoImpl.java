@@ -3,6 +3,8 @@ package com.ua.dao.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.ua.entity.User;
 @Repository
 public class UserDaoImpl implements UserDao{
 
+	
 	@Autowired
 	SessionFactory sessionFactory;
 	
@@ -44,11 +47,12 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void deleteById(Long id) {
 		User user = getUserById(id);
-		if (user == null) {
+		if (user != null) {
 			getSessionFactory().delete(user);
 		}
 		
 	}
+
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -60,9 +64,12 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public User findByEmail(String email) {
-		return (User) getSessionFactory().createQuery(
-				"SELECT u FROM User u WHERE u.email = :email")
-				.setParameter("email", email).getSingleResult();
+		try {
+			return (User) getSessionFactory().createQuery("SELECT u FROM User u WHERE u.email = :email")
+					.setParameter("email", email).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

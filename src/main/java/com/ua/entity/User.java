@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import com.ua.entity.enums.Role;
 import com.ua.entity.enums.Sex;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "person", indexes =  @Index(columnList = "email,firstName"))
 public class User extends BaseEntity{

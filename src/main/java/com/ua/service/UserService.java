@@ -7,6 +7,7 @@ import com.ua.entity.User;
 public interface UserService {
 
 	void save(User user);
+
 	void update(User user);
 	User getUserById(Long id);
 	void deleteById(Long id);

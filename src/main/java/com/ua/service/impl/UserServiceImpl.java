@@ -10,19 +10,18 @@ import org.springframework.stereotype.Service;
 import com.ua.dao.UserDao;
 import com.ua.entity.User;
 import com.ua.service.UserService;
-
-@Service
 @Transactional
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;
 //	@Autowired
 //	PasswordEncoder passwordEncoder;
-//	
+	
 	@Override
 	public void save(User user) {
-//		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		//user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDao.saveUser(user);
 		
 	}
@@ -54,5 +53,7 @@ public class UserServiceImpl implements UserService {
 	public User findByEmail(String email) {
 		return userDao.findByEmail(email);
 	}
+
+
 
 }
