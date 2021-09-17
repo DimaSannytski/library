@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/taglib.jsp"%>
+<%@ include file="/WEB-INF/views/includes/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/libr" method="POST"
+ <%@include file="/WEB-INF/views/includes/header.jsp" %>
+
+	<form:form action="/libr" method="POST"
 		modelAttribute="registerModel" class="login">
 		<br>
 		<h1 style="text-align: center; color: #464646">Реєстрація</h1>

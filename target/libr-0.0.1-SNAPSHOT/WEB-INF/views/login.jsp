@@ -29,7 +29,7 @@
 		</c:if>
 
 	</form:form>
-	<form class="login">Ще немає аккаунту?<a class="exit" href="/register"> Зареєструйтесь</a>
+	<form class="login">Ще немає аккаунту?<a class="exit" href="/auth"> Зареєструйтесь</a>
 	</form>
 </body>
 </html>

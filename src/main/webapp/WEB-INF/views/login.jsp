@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="taglib.jsp"%>
+<%@ include file="/WEB-INF/views/includes/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <%@include file="/WEB-INF/views/includes/header.jsp" %>
 	<form:form action="/login" method="POST" class="login">
 		<br>
 		<h1 style="text-align: center; color: #464646;">Авторизація</h1>
