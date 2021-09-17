@@ -6,10 +6,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.ua.dao.AuthorDao;
 import com.ua.entity.Author;
-
+@Repository
 public class AuthorDaoImpl implements AuthorDao{
 
 	@Autowired
@@ -44,7 +45,7 @@ public class AuthorDaoImpl implements AuthorDao{
 	@Override
 	public void deleteById(Long id) {
 		Author author = getAuthorById(id);
-		if (author == null) {
+		if (author != null) {
 			getSessionFactory().delete(author);
 		}
 		

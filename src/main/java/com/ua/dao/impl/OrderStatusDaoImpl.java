@@ -1,5 +1,60 @@
 package com.ua.dao.impl;
 
-public class OrderStatusDaoImpl {
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.ua.dao.OrderStatusDao;
+import com.ua.entity.OrderStatus;
+
+@Repository
+public class OrderStatusDaoImpl implements OrderStatusDao{
+
+	@Autowired
+	SessionFactory sessionFactory;
+	
+	public Session getSessionFactory() {
+		
+		return sessionFactory.getCurrentSession();
+	}
+	
+	@Override
+	public void saveOrderStatus(OrderStatus orderStatus) {
+		orderStatus.setCreatedAt(new Date());
+		orderStatus.setUpdatedAt(new Date());
+		getSessionFactory().save(orderStatus);
+		
+	}
+
+	@Override
+	public void updateOrderStatus(OrderStatus orderStatus) {
+		orderStatus.setUpdatedAt(new Date());
+		getSessionFactory().update(orderStatus);
+		
+	}
+
+	@Override
+	public OrderStatus getOrderStatusById(Long id) {
+		return (OrderStatus) getSessionFactory().get(OrderStatus.class, id);
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		OrderStatus orderStatus = getOrderStatusById(id);
+		if (orderStatus != null) {
+			getSessionFactory().delete(orderStatus);
+		}
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<OrderStatus> findAll() {
+		return getSessionFactory().createQuery("from OrderStatus").list();
+	}
 
 }
