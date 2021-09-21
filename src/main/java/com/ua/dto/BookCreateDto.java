@@ -15,4 +15,10 @@ public class BookCreateDto {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publicationDate;
+	
+	private long authorId;
+	
+	private long genreId;
+	
+	private int copyCount;
 }

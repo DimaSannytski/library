@@ -29,7 +29,7 @@ public class BookAuthorController {
 	AuthorService authorService;
 	
 	@GetMapping("/all")
-	public String showAllUsers(Principal principal, Model model)  {
+	public String showAllAuthors(Principal principal, Model model)  {
 		
 		List<Author> authors = authorService.findAll();
 		model.addAttribute("searchModel", new AuthorNameFilter());
@@ -46,7 +46,7 @@ public class BookAuthorController {
 	}
 	
 	@GetMapping ("/create")
-	public String createGrouo(Principal principal, Model model) {
+	public String createAuthor(Principal principal, Model model) {
 
 		
 		model.addAttribute("createAuthor", new AuthorCreateDto());
@@ -55,7 +55,7 @@ public class BookAuthorController {
 	}
 	
 	@PostMapping("/create")
-	public String createGroupNew(Principal principal,@ModelAttribute("createAuthor")@Valid AuthorCreateDto request,BindingResult result) {
+	public String createauthor(Principal principal,@ModelAttribute("createAuthor")@Valid AuthorCreateDto request,BindingResult result) {
 		if(result.hasErrors()) {
 			return "redirect:/create";
 		}
@@ -68,7 +68,7 @@ public class BookAuthorController {
 	
 	
 	@GetMapping("/{authorId}")
-	public String showOneGroup(@PathVariable("authorId") long authorId,Principal principal,Model model) {
+	public String showAuthor(@PathVariable("authorId") long authorId,Principal principal,Model model) {
 		Author author = authorService.getAuthorById(authorId);
 		
 		if (author == null) return "redirect:/bookauthor/all";

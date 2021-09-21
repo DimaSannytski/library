@@ -19,7 +19,7 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping
-	public String redirectPage(Principal principal,Model model) {
+	public String userPage(Principal principal,Model model) {
 		User user = userService.findByEmail(principal.getName());
 		
 		

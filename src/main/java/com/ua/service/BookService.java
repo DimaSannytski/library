@@ -13,4 +13,6 @@ public interface BookService {
 	void deleteById(Long id);
 	List<Book> findAll();
 	List<Book> findByTitle(String title);
+	
+	void createBookCopys(Book book, int copyCount);
 }

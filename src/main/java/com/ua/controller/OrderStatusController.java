@@ -22,37 +22,37 @@ public class OrderStatusController {
     OrderStatusService orderStatusService;
 
     @GetMapping("/all")
-    public String showAllUsers(Principal principal, Model model)  {
+    public String showAllOrderStatus(Principal principal, Model model)  {
         List<OrderStatus> orderStatus = orderStatusService.findAll();
         model.addAttribute("orderStatus",orderStatus);
         return"/orderstatus/all";
     }
 
     @GetMapping ("/create")
-    public String createGroup(Principal principal, Model model) {
+    public String createStatus(Principal principal, Model model) {
         model.addAttribute("createOrderStatus", new OrderStatusDto());
         return "/orderstatus/create";
     }
 
     @PostMapping("/create")
-    public String createGroupNew(Principal principal, @ModelAttribute("createOrderStatus")@Valid OrderStatusDto request, BindingResult result) {
+    public String createOrderStatus(Principal principal, @ModelAttribute("createOrderStatus")@Valid OrderStatusDto request, BindingResult result) {
         if(result.hasErrors()) {
             return "/orderstatus/create";
         }
         OrderStatus orderStatus = OrderStatusMapper.dtoToOrderStatus(request);
         orderStatusService.saveOrderStatus(orderStatus);
-        return "redirect:/orderstatus/"+orderStatus.getId();
+        return "redirect:/orderstatus/all";
     }
 
-    @GetMapping("/{orderStatusId}")
-    public String showOneGroup(@PathVariable("orderStatusId") long orderStatusId, Principal principal, Model model) {
-        OrderStatus orderStatus = orderStatusService.getOrderStatusById(orderStatusId);
-
-        if (orderStatus == null) return "redirect:/orderstatus/all";
-
-        model.addAttribute("orderStatusModel", OrderStatusMapper.orderStatusDto(orderStatus));
-
-        return"/orderstatus/orderstatus";
-    }
+//    @GetMapping("/{orderStatusId}")
+//    public String showOneGroup(@PathVariable("orderStatusId") long orderStatusId, Principal principal, Model model) {
+//        OrderStatus orderStatus = orderStatusService.getOrderStatusById(orderStatusId);
+//
+//        if (orderStatus == null) return "redirect:/orderstatus/all";
+//
+//        model.addAttribute("orderStatusModel", OrderStatusMapper.orderStatusDto(orderStatus));
+//
+//        return"/orderstatus/orderstatus";
+//    }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -49,14 +48,14 @@ public class GenreController {
         }
         Genre genre = GenreMapper.dtoToGenre(request);
         genreService.saveGenre(genre);
-        return "redirect:/genre/"+genre.getId();
+        return "redirect:/genre/all";
     }
 
-    @GetMapping("/{genreId}")
-    public String showOneGroup(@PathVariable("genreId") long genreId,Principal principal,Model model) {
-        Genre genre = genreService.getGenreById(genreId);
-        if (genre == null) return "redirect:/genre/all";
-        model.addAttribute("genreModel", GenreMapper.genreToDto(genre));
-        return"/genre/genre";
-    }
+//    @GetMapping("/{genreId}")
+//    public String showOneGroup(@PathVariable("genreId") long genreId,Principal principal,Model model) {
+//        Genre genre = genreService.getGenreById(genreId);
+//        if (genre == null) return "redirect:/genre/all";
+//        model.addAttribute("genreModel", GenreMapper.genreToDto(genre));
+//        return"/genre/genre";
+//    }
 }

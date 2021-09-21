@@ -14,4 +14,12 @@ public class BookDto {
 	private String description;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publicationDate;
+	
+	private String authorFirstName;
+	
+	private String authorLastName;
+	
+	private String genre;
+	
+	private int availableCopys;
 }

@@ -1,5 +1,6 @@
 package com.ua.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,5 +29,5 @@ public class BookCopy extends BaseEntity{
 	private BookStatus bookStatus;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bookCopy")
-	private List<BookOrder> bookOrders;
+	private List<BookOrder> bookOrders = new ArrayList<>();
 }
