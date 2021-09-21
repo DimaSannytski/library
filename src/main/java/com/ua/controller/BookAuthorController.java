@@ -39,7 +39,7 @@ public class BookAuthorController {
 	
 	
 	@GetMapping ("/create")
-	public String createGrouo(Principal principal, Model model) {
+	public String createGroup(Principal principal, Model model) {
 
 		
 		model.addAttribute("createAuthor", new AuthorCreateDto());
