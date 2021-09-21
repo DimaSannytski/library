@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ua.dao.UserDao;
@@ -16,12 +17,12 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;
-//	@Autowired
-//	PasswordEncoder passwordEncoder;
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	@Override
 	public void save(User user) {
-		//user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDao.saveUser(user);
 		
 	}

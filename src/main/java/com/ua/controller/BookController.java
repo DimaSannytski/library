@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ua.dto.BookCreateDto;
-import com.ua.dto.BookTitleFilter;
+import com.ua.dto.SearchByOneFieldDto;
 import com.ua.entity.Book;
 import com.ua.mapper.BookMapper;
+import com.ua.service.AuthorService;
 import com.ua.service.BookService;
 import com.ua.service.GenreService;
 
@@ -31,12 +33,15 @@ public class BookController {
 	BookService bookService;
 	@Autowired 
 	GenreService genreService;
+	@Autowired 
+	AuthorService authorService;
+	
 	
 	@GetMapping("/all")
 	public String showAllUsers(Principal principal, Model model) {
 		
 		List<Book> books = bookService.findAll();
-		model.addAttribute("searchModel", new BookTitleFilter());
+		model.addAttribute("searchModel", new SearchByOneFieldDto());
 		model.addAttribute("bookModel",books);
 		
 		return"/book/all";
@@ -47,14 +52,17 @@ public class BookController {
 
 		
 		model.addAttribute("createBook",new BookCreateDto());
+		model.addAttribute("authors", authorService.findAll());
 		
 		return "/book/create";
 	}
 	
 	@PostMapping("/create")
 	public String createGroupNew(Principal principal,@ModelAttribute("createBook")@Valid BookCreateDto request,BindingResult result) {
+		
 		if(result.hasErrors()) {
-			return "redirect:/create";
+			System.out.println(result.getAllErrors().toString());
+			return "/book/create";
 		}
 		Book book = BookMapper.createDtoToBook(request);
 		bookService.saveBook(book);
@@ -72,5 +80,12 @@ public class BookController {
 		model.addAttribute("bookModel", BookMapper.bookToDto(book));
 
 		return"book/book";
+	}
+	
+	@PostMapping("/search")
+	public String searchBookByTitle(Model model,@RequestParam("search") String search,Principal principal) {
+
+		model.addAttribute("bookModel",bookService.findByTitle(search));
+		return "book/all";
 	}
 }

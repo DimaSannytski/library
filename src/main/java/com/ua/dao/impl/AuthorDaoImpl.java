@@ -58,4 +58,11 @@ public class AuthorDaoImpl implements AuthorDao{
 		return getSessionFactory().createQuery("from Author").list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Author> findAllByName(String name) {
+		return getSessionFactory().createQuery("SELECT u FROM Author u WHERE u.firstName like :name or u.lastName like :name")
+		.setParameter("name", name).list();
+	}
+
 }

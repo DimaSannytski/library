@@ -45,7 +45,7 @@ public class OrderStatusServiceImpl implements OrderStatusService{
 	@Override
 	public List<OrderStatus> findAll() {
 		
-		return findAll();
+		return orderStatusDao.findAll();
 	}
 
 }

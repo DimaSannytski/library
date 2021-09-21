@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ua.dto.AuthorCreateDto;
 import com.ua.dto.AuthorNameFilter;
@@ -37,6 +38,12 @@ public class BookAuthorController {
 		return"/bookauthor/all";
 	}
 	
+	@PostMapping("/search")
+	public String searchAuthor(Model model,@RequestParam("search") String search,Principal principal) {
+
+		model.addAttribute("authors",authorService.findAllByName(search));
+		return "bookauthor/all";
+	}
 	
 	@GetMapping ("/create")
 	public String createGrouo(Principal principal, Model model) {
@@ -66,7 +73,7 @@ public class BookAuthorController {
 		
 		if (author == null) return "redirect:/bookauthor/all";
 		
-		model.addAttribute("authorModel", AuthorMapper.AuthorToDto(author));
+		model.addAttribute("authorModel", AuthorMapper.authorToDto(author));
 
 		return"/bookauthor/author";
 	}

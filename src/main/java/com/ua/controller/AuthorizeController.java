@@ -50,10 +50,11 @@ public class AuthorizeController {
 	}
 	
 	@GetMapping({"/","/login"})
-	public String showLogin(Model model) {
+	public String showLogin() {
 		return "login";
 	}
 	
+
 	@GetMapping("/logout")
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -65,7 +66,9 @@ public class AuthorizeController {
 	@GetMapping("/isAvalible")
 	public String tryLogin(Principal principal) {
 		User  user = userService.findByEmail(principal.getName());
-		if(user == null) return "redirect:/login";
+	
+		if(user == null) return "redirect:/logout";
+		
 		else return "redirect:/user";
 	}
 }
