@@ -9,11 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.ua.dto.BookCreateDto;
 import com.ua.dto.BookTitleFilter;
@@ -43,7 +39,7 @@ public class BookController {
 	}
 	
 	@GetMapping ("/create")
-	public String createGrouo(Principal principal, Model model) {
+	public String createGroup(Principal principal, Model model) {
 
 		
 		model.addAttribute("createBook",new BookCreateDto());
@@ -73,4 +69,6 @@ public class BookController {
 
 		return"book/book";
 	}
+
+
 }
