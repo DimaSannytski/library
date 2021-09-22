@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Автори</title>
 
 </head>
 <body>
+
+
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
-	<form:form action="/search" method="POST">
+	
+		<div class="container">
+	<form:form action="/bookauthor/search" method="POST">
 		<input name="search" placeholder="Введіть назву" type="text" />
 		<input type="submit" value="Знайти">
 	</form:form>
@@ -20,13 +24,20 @@
 	<h1>Автори</h1>
 	<a href="/bookauthor/create"> Створити</a>
 	<br>
+	<table class="table table-hover table-bordered">
 	<c:forEach items="${authors}" var="author">
-
+		<tr>
+				 <td>
 		<div style="margin-left: 60px;">
-			<a href="/bookauthor/${author.id}"><span class="left-top">
-					${author.firstName} ${author.lastName} </span></a>
+			<a href="/bookauthor/${author.id}">
+					${author.firstName} ${author.lastName} </a>
 
 		</div>
+		</td>
+		</tr>
 	</c:forEach>
+	
+	</table>
+	</div>
 </body>
 </html>

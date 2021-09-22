@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ua.dto.BookCreateDto;
-import com.ua.dto.BookTitleFilter;
+import com.ua.dto.SearchByOneFieldDto;
 import com.ua.entity.Book;
 import com.ua.mapper.BookMapper;
+import com.ua.service.AuthorService;
+import com.ua.service.BookCopyService;
 import com.ua.service.BookService;
 import com.ua.service.GenreService;
 
@@ -31,46 +34,73 @@ public class BookController {
 	BookService bookService;
 	@Autowired 
 	GenreService genreService;
+	@Autowired 
+	AuthorService authorService;
+	@Autowired
+	BookCopyService bookCopyService;
 	
 	@GetMapping("/all")
-	public String showAllUsers(Principal principal, Model model) {
+	public String showAllBooks(Principal principal, Model model) {
 		
 		List<Book> books = bookService.findAll();
-		model.addAttribute("searchModel", new BookTitleFilter());
+		model.addAttribute("searchModel", new SearchByOneFieldDto());
 		model.addAttribute("bookModel",books);
 		
 		return"/book/all";
 	}
 	
 	@GetMapping ("/create")
-	public String createGrouo(Principal principal, Model model) {
+	public String createBook(Principal principal, Model model) {
 
 		
 		model.addAttribute("createBook",new BookCreateDto());
+		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
 		
 		return "/book/create";
 	}
 	
 	@PostMapping("/create")
-	public String createGroupNew(Principal principal,@ModelAttribute("createBook")@Valid BookCreateDto request,BindingResult result) {
+	public String createBook(Principal principal,@ModelAttribute("createBook")@Valid BookCreateDto request,BindingResult result) {
+		
 		if(result.hasErrors()) {
-			return "redirect:/create";
+			System.out.println(result.getAllErrors().toString());
+			return "/book/create";
 		}
-		Book book = BookMapper.createDtoToBook(request);
+		Book book = BookMapper.createDtoToBook(request, authorService, genreService);
 		bookService.saveBook(book);
-
+		bookService.createBookCopys(book, request.getCopyCount());
 	
 		return "redirect:/book/"+book.getId();
 	}
 	
 	
 	@GetMapping("/{bookId}")
-	public String showOneGroup(@PathVariable("bookId") long bookId,Principal principal,Model model) {
+	public String showBook(@PathVariable("bookId") long bookId,Principal principal,Model model) {
 		Book book = bookService.getBookById(bookId);
 		if (book == null) return "redirect:/book/all";
 		
 		model.addAttribute("bookModel", BookMapper.bookToDto(book));
-
+		
+		
 		return"book/book";
+	}
+	
+	@GetMapping("/edit/{bookId}")
+	public String editBook(@PathVariable("bookId") long bookId,Principal principal,Model model) {
+		Book book = bookService.getBookById(bookId);
+		if (book == null) return "redirect:/book/all";
+		
+		//model.addAttribute("bookModel", BookMapper.bookToDto(book));
+		
+		
+		return"book/book";
+	}
+	
+	@PostMapping("/search")
+	public String searchBookByTitle(Model model,@RequestParam("search") String search,Principal principal) {
+
+		model.addAttribute("bookModel",bookService.findByTitle(search));
+		return "book/all";
 	}
 }

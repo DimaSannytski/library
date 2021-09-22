@@ -1,10 +1,12 @@
 package com.ua.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -36,10 +38,10 @@ public class Book extends BaseEntity{
 	@ManyToOne
 	private Genre genre;
 	
-	@ManyToMany(cascade = CascadeType.ALL,
+	@ManyToMany( cascade = CascadeType.ALL,
 			mappedBy = "co_bookList")
-	private List<Author> co_Authors;
+	private List<Author> co_Authors = new ArrayList<>();
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "book")
-	private List<BookCopy> bookCopies;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "book")
+	private List<BookCopy> bookCopies = new ArrayList<>();
 }

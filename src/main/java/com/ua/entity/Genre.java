@@ -1,5 +1,6 @@
 package com.ua.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,5 +25,5 @@ public class Genre extends BaseEntity{
 	private String title;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")
-	private List<Book> books;
+	private List<Book> books = new ArrayList<>();
 }

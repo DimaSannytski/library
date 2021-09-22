@@ -5,21 +5,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Створити автора</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
+	
+		<div class="container">
+		<div class="p-3 border bg-light">
 	<form:form method="POST" action="/bookauthor/create/"
 		modelAttribute="createAuthor">
-		<form:input type="text" placeholder="Ім'я" path="firstName" />
+		<div class="input-group mb-3">
+		<form:input type="text" placeholder="Ім'я" path="firstName" /></div>
 		<br>
-		<form:input type="text" placeholder="Прізвище" path="lastName" />
+		<div class="input-group mb-3">
+		<form:input type="text" placeholder="Прізвище" path="lastName" /> </div>
 		<br>
 
 
 
-		<button>Створити</button>
+		<button class="btn btn-outline-success">Створити</button>
 	</form:form>
-
+	
+	</div>
+</div>
 </body>
 </html>

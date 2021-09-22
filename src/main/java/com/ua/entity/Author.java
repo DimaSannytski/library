@@ -1,5 +1,6 @@
 package com.ua.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,8 +34,8 @@ public class Author extends BaseEntity{
 		joinColumns = {@JoinColumn(name = "author_id")},
 		inverseJoinColumns = {@JoinColumn(name = "book_id")}
 		)
-	private List<Book> co_bookList;
+	private List<Book> co_bookList = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "bookAuthor", cascade = CascadeType.ALL)
-	private List<Book> bookList;
+	private List<Book> bookList = new ArrayList<>();
 }

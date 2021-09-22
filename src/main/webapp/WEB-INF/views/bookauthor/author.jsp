@@ -5,14 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${authorModel.firstName} ${authorModel.lastName}</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
+		<div class="container">
 	${authorModel.firstName}
 	<br> ${authorModel.lastName}
 	<br>
 
-
+</div>
 </body>
 </html>

@@ -5,21 +5,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Створити книгу</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
-	<form:form method="POST" action="/book/create/"
-		modelAttribute="createBook">
-		<form:input type="text" placeholder="Назва" path="title" />
-		<br>
-		<form:textarea type="text" placeholder="Опис" path="description" />
-		<br>
 
+	<div class="container">
+		<div class="p-3 border bg-light">
+			<form:form method="POST" action="/book/create/"
+				modelAttribute="createBook">
+				
+				<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-small">Назва</span>
+					<form:input type="text" placeholder="Назва" path="title" />
+				</div>
+				<br>
+				<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-small">Опис</span>
+					<form:textarea type="text" placeholder="Опис" path="description" />
+				</div>
+				<br>
+				<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-small">Дата публікації</span>
+					<form:input type="date" placeholder="Дата" path="publicationDate" />
+				</div>
 
+				<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-small">Автор</span>
+					<form:select path="authorId">
+						<c:forEach items="${authors}" var="author">
+							<form:option value="${author.id}">${author.firstName} ${author.lastName}</form:option>
+						</c:forEach>
+					</form:select>
+				</div>
+				
+					<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-small">Жанр</span>
+					<form:select path="genreId">
+						<c:forEach items="${genres}" var="genre">
+							<form:option value="${genre.id}">${genre.title}</form:option>
+						</c:forEach>
+					</form:select>
+				</div>
 
-		<button>Створити</button>
-	</form:form>
-
+				<button class="btn btn-outline-success">Створити</button>
+			</form:form>
+		</div>
+	</div>
 </body>
 </html>

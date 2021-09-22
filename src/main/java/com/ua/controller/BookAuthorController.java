@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ua.dto.AuthorCreateDto;
 import com.ua.dto.AuthorNameFilter;
@@ -28,7 +29,7 @@ public class BookAuthorController {
 	AuthorService authorService;
 	
 	@GetMapping("/all")
-	public String showAllUsers(Principal principal, Model model)  {
+	public String showAllAuthors(Principal principal, Model model)  {
 		
 		List<Author> authors = authorService.findAll();
 		model.addAttribute("searchModel", new AuthorNameFilter());
@@ -37,9 +38,15 @@ public class BookAuthorController {
 		return"/bookauthor/all";
 	}
 	
+	@PostMapping("/search")
+	public String searchAuthor(Model model,@RequestParam("search") String search,Principal principal) {
+
+		model.addAttribute("authors",authorService.findAllByName(search));
+		return "bookauthor/all";
+	}
 	
 	@GetMapping ("/create")
-	public String createGrouo(Principal principal, Model model) {
+	public String createAuthor(Principal principal, Model model) {
 
 		
 		model.addAttribute("createAuthor", new AuthorCreateDto());
@@ -48,7 +55,7 @@ public class BookAuthorController {
 	}
 	
 	@PostMapping("/create")
-	public String createGroupNew(Principal principal,@ModelAttribute("createAuthor")@Valid AuthorCreateDto request,BindingResult result) {
+	public String createauthor(Principal principal,@ModelAttribute("createAuthor")@Valid AuthorCreateDto request,BindingResult result) {
 		if(result.hasErrors()) {
 			return "redirect:/create";
 		}
@@ -61,12 +68,12 @@ public class BookAuthorController {
 	
 	
 	@GetMapping("/{authorId}")
-	public String showOneGroup(@PathVariable("authorId") long authorId,Principal principal,Model model) {
+	public String showAuthor(@PathVariable("authorId") long authorId,Principal principal,Model model) {
 		Author author = authorService.getAuthorById(authorId);
 		
 		if (author == null) return "redirect:/bookauthor/all";
 		
-		model.addAttribute("authorModel", AuthorMapper.AuthorToDto(author));
+		model.addAttribute("authorModel", AuthorMapper.authorToDto(author));
 
 		return"/bookauthor/author";
 	}

@@ -1,5 +1,6 @@
 package com.ua.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,10 +39,10 @@ public class User extends BaseEntity{
 	private String email;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "reader")
-	private List<BookOrder> bookOrders;
+	private List<BookOrder> bookOrders = new ArrayList<>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
-	private List<BookOrder> ManagingBookOrders;
+	private List<BookOrder> ManagingBookOrders = new ArrayList<>();
 	
 	@Enumerated(EnumType.STRING)
 	private Sex sex;

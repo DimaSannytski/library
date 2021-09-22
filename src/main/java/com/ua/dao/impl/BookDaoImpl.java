@@ -55,5 +55,14 @@ public class BookDaoImpl implements BookDao{
 	public List<Book> findAll() {
 		return getSessionFactory().createQuery("from Book").list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Book> findByTitle(String title) {
+		
+			return  getSessionFactory().createQuery("SELECT u FROM Book u WHERE u.title like :title")
+					.setParameter("title", title).list();
+	
+	}
 
 }

@@ -13,7 +13,7 @@ public interface AuthorMapper {
 		return author;
 	}
 	
-	public static AuthorDto AuthorToDto(Author author) {
+	public static AuthorDto authorToDto(Author author) {
 		AuthorDto authorDto = new AuthorDto();
 		
 		authorDto.setFirstName(author.getFirstName());

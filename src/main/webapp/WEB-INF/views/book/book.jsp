@@ -5,13 +5,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${bookModel.title}</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
+	
+		<div class="container">
 	${bookModel.title}
+	
+	
 	<br> Про книгу: ${bookModel.description}
 	<br> Дата публікації: ${bookModel.publicationDate}
-	<br>
+	<br> Автор: ${bookModel.authorFirstName} ${bookModel.authorLastName}
+	<br> Жанр: ${bookModel.genre}
+	<br> В наявності: ${bookModel.availableCopys}
+	
+	<br> 
+`	<a href="/book/edit/${bookModel.id}"> Редагувати</a> 
+	
+	</div>
 </body>
 </html>
