@@ -9,9 +9,12 @@ import lombok.Data;
 public class BookDto {
 
 
+	private long id;
+	
 	private String title;
 	
 	private String description;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publicationDate;
 	

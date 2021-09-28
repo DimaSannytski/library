@@ -21,7 +21,7 @@
 	<br> В наявності: ${bookModel.availableCopys}
 	
 	<br> 
-`	<a href="/book/edit/${bookModel.id}"> Редагувати</a> 
+	<a href="/book/edit/${bookModel.id}"> Редагувати</a> 
 	
 	</div>
 </body>

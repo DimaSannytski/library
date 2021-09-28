@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class BookCreateDto {
 
+	private long id;
+	
 	private String title;
 	
 	private String description;

@@ -35,14 +35,14 @@ public class GenreController {
     }
 
     @GetMapping ("/create")
-    public String createGroup(Principal principal, Model model) {
+    public String createGenre(Principal principal, Model model) {
         model.addAttribute("createGenre", new GenreDto());
         return "/genre/create";
     }
 
 
     @PostMapping("/create")
-    public String createGroupNew(Principal principal, @ModelAttribute("createGenre")@Valid GenreDto request, BindingResult result) {
+    public String createGenre(Principal principal, @ModelAttribute("createGenre")@Valid GenreDto request, BindingResult result) {
         if(result.hasErrors()) {
             return "/genre/create";
         }
@@ -52,7 +52,7 @@ public class GenreController {
     }
 
 //    @GetMapping("/{genreId}")
-//    public String showOneGroup(@PathVariable("genreId") long genreId,Principal principal,Model model) {
+//    public String showOneGenre(@PathVariable("genreId") long genreId,Principal principal,Model model) {
 //        Genre genre = genreService.getGenreById(genreId);
 //        if (genre == null) return "redirect:/genre/all";
 //        model.addAttribute("genreModel", GenreMapper.genreToDto(genre));

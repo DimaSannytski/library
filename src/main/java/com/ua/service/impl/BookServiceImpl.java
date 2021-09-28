@@ -70,7 +70,7 @@ public class BookServiceImpl implements BookService{
 			bookCopyService.saveBookCopy(bookCopy);
 			
 		}
-		saveBook(book);
+
 	}
 
 }

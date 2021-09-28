@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Створити книгу</title>
+<title>Редагування</title>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
 
 	<div class="container">
 		<div class="p-3 border bg-light">
-			<form:form method="POST" action="/book/create/"
-				modelAttribute="createBook">
+			<form:form method="POST" action="/book/edit/"
+				modelAttribute="bookModel">
 				
 				<div class="input-group mb-3">
 				<span class="input-group-text" id="inputGroup-sizing-small">Назва</span>
@@ -47,11 +47,8 @@
 						</c:forEach>
 					</form:select>
 				</div>
-				<div class="input-group mb-3">
-				<span class="input-group-text" id="inputGroup-sizing-small">Кількість копій</span>
-					<form:input type="number"  path="copyCount" />
-				</div>
-				<button class="btn btn-outline-success">Створити</button>
+
+				<button class="btn btn-outline-success">Зберегти</button>
 			</form:form>
 		</div>
 	</div>

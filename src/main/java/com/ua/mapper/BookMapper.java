@@ -20,6 +20,35 @@ public interface BookMapper {
 		
 		return book;
 	}
+	
+	public static BookCreateDto getEdtBookModel(Book book) {
+		BookCreateDto bookCreateDto = new BookCreateDto();
+		if (book.getBookAuthor() != null) {
+			bookCreateDto.setAuthorId(book.getBookAuthor().getId());
+		}
+		if (book.getGenre() != null) {
+			bookCreateDto.setGenreId(book.getGenre().getId());
+		}
+		bookCreateDto.setTitle(book.getTitle());
+		bookCreateDto.setDescription(book.getDescription());
+		bookCreateDto.setPublicationDate(book.getPublicationDate());
+		
+		
+		
+		return bookCreateDto;
+		
+	}
+	public static void updateDtoToBook(BookCreateDto bookCreateDto, AuthorService authorService, 
+			GenreService genreService, Book book){
+		
+		book.setId(bookCreateDto.getId());
+		book.setTitle(bookCreateDto.getTitle());
+		book.setDescription(bookCreateDto.getDescription());
+		book.setPublicationDate(bookCreateDto.getPublicationDate());
+		book.setBookAuthor(authorService.getAuthorById(bookCreateDto.getAuthorId()));
+		book.setGenre(genreService.getGenreById(bookCreateDto.getGenreId()));
+
+	}
 	public static BookDto bookToDto(Book book) {
 		
 		BookDto bookDto = new BookDto();
@@ -36,6 +65,8 @@ public interface BookMapper {
 			bookDto.setGenre(book.getGenre().getTitle());
 		}
 
+		bookDto.setId(book.getId());
+		
 		bookDto.setAvailableCopys(book.getBookCopies().size());
 		
 		return bookDto;
