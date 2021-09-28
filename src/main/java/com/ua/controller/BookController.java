@@ -64,7 +64,7 @@ public class BookController {
 	public String createBook(Principal principal,@ModelAttribute("createBook")@Valid BookCreateDto request,BindingResult result) {
 		
 		if(result.hasErrors()) {
-			System.out.println(result.getAllErrors().toString());
+
 			return "/book/create";
 		}
 		Book book = BookMapper.createDtoToBook(request, authorService, genreService);
@@ -91,10 +91,29 @@ public class BookController {
 		Book book = bookService.getBookById(bookId);
 		if (book == null) return "redirect:/book/all";
 		
-		//model.addAttribute("bookModel", BookMapper.bookToDto(book));
+		model.addAttribute("bookModel", BookMapper.getEdtBookModel(book));
+		model.addAttribute("authors", authorService.findAll());
+		model.addAttribute("genres", genreService.findAll());
 		
+		return"book/edit";
+	}
+	@PostMapping("/edit")
+	public String editBook(Principal principal,@ModelAttribute("bookModel")@Valid BookCreateDto request,BindingResult result) {
 		
-		return"book/book";
+		if(result.hasErrors()) {
+
+			return "/book/edit" +request.getId() ;
+		}
+		
+		Book book = bookService.getBookById(request.getId() );
+		if (book == null) return "redirect:/book/all";
+		
+		BookMapper.updateDtoToBook(request, authorService, genreService, book);
+		
+		bookService.updateBook(book);
+	
+	
+		return "redirect:/book/"+book.getId();
 	}
 	
 	@PostMapping("/search")

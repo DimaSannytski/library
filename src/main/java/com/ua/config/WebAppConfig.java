@@ -34,7 +34,8 @@ public class WebAppConfig {
 	    private static final String PROPERTY_NAME_HIBERNATE_HBM2DLL_AUTO = "hibernate.hbm2ddl.auto";
 	    private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 	    private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
-	 
+		private static final String PROPERTY_NAME_CHARACTER_ENCODING = "hibernate.connection.characterEncoding";
+		 
 	    @Resource
 	    private Environment env;
 	 
@@ -46,7 +47,7 @@ public class WebAppConfig {
 	        dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
 	        dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
 	        dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
-
+	        
 	        return dataSource;
 	    }
 	 
@@ -66,6 +67,7 @@ public class WebAppConfig {
 	        properties.put(PROPERTY_NAME_HIBERNATE_HBM2DLL_AUTO, 
 	        		env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DLL_AUTO));
 	        properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
+	        properties.put(PROPERTY_NAME_CHARACTER_ENCODING, env.getRequiredProperty(PROPERTY_NAME_CHARACTER_ENCODING));
 	        return properties; 
 	    }
 	 

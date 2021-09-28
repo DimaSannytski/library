@@ -13,12 +13,13 @@
 
 	<div class="container">
 		<h1>Статуси замовлень</h1>
-		<a href="/bookstatus/create"> Створити</a> <br>
-		<c:forEach items="${bookStatus}" var="bookStatus">1
+		<a href="/orderstatus/create"> Створити</a> <br>
+		<c:forEach items="${orderStatus}" var="orderStat">
 
     <div style="margin-left: 60px;">
-				<a href="/bookstatus/${bookStatus.id}"><span class="left-top">
-						${bookStatus.title} </span></a>
+				
+				<span class="left-top">
+						${orderStat.title} </span>
 
 			</div>
 		</c:forEach>
