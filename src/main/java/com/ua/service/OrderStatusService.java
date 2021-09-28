@@ -3,6 +3,7 @@ package com.ua.service;
 import java.util.List;
 
 import com.ua.entity.OrderStatus;
+import com.ua.entity.enums.OrderStatusEnum;
 
 public interface OrderStatusService {
 
@@ -11,4 +12,5 @@ public interface OrderStatusService {
 	OrderStatus getOrderStatusById(Long id);
 	void deleteById(Long id);
 	List<OrderStatus> findAll();
+	OrderStatus getOrderStatusByEnum(OrderStatusEnum orderStatusEnum);
 }

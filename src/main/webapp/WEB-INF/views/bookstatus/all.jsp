@@ -11,15 +11,15 @@
 	<div class="container">
 		<h1>Статуси книжок</h1>
 		<a href="/bookstatus/create"> Створити</a> <br>
-		<c:forEach items="${bookStatus}" var="bookStatus">
 
-			<div style="margin-left: 60px;">
-				<a href="/bookstatus/${bookStatus.id}"><span class="left-top">
-						${bookStatus.title} </span></a>
-
-			</div>
-		</c:forEach>
-
+		<table class="table table-hover table-bordered">
+			<c:forEach items="${bookStatus}" var="bookStatus">
+				<tr>
+					<td><a href="/bookstatus/${bookStatus.id}"><span
+							class="left-top"> ${bookStatus.title} </span></a></td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>

@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<div class="p-3 border bg-light">
-			<form:form method="POST" action="/book/edit/"
+			<form:form method="POST" action="/book/edit?bookId=${bookModel.id}"
 				modelAttribute="bookModel">
 				
 				<div class="input-group mb-3">
@@ -50,7 +50,27 @@
 
 				<button class="btn btn-outline-success">Зберегти</button>
 			</form:form>
+			
+			
+			
+			
 		</div>
+		
+		 <h1>Додати копії</h1>
+		<div class="p-3 border bg-light">
+		<form:form method="POST" action="/book/createcopy?bookId=${bookModel.id}"
+				modelAttribute="createCopyModel">
+
+				<div class="input-group mb-3">
+				<span class="input-group-text" id="inputGroup-sizing-small">Кількість копій</span>
+					<form:input type="number"  path="count" />
+				</div>
+				<button class="btn btn-outline-success">Створити</button>
+
+
+		</form:form>
+		</div>
+		
 	</div>
 </body>
 </html>

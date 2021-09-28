@@ -39,5 +39,8 @@ public class BookOrder extends BaseEntity{
 	private BookCopy bookCopy;
 	
 	@ManyToOne
+	private Book book;
+	
+	@ManyToOne
 	private User manager;
 }

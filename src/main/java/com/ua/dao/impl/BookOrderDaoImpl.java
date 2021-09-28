@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ua.dao.BookOrderDao;
 import com.ua.entity.BookOrder;
+import com.ua.entity.enums.OrderStatusEnum;
 
 @Repository
 public class BookOrderDaoImpl implements BookOrderDao{
@@ -55,6 +56,14 @@ public class BookOrderDaoImpl implements BookOrderDao{
 	@Override
 	public List<BookOrder> findAll() {
 		return getSessionFactory().createQuery("from BookOrder").list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BookOrder> findAllCreatedByUserId(Long id) {
+		System.out.println(OrderStatusEnum.CREATED.toString());
+		return  getSessionFactory().createQuery("SELECT u FROM BookOrder u WHERE u.reader.id = :id and u.orderStatus.orderStatusEnum = :status")
+				.setParameter("id", id).setParameter("status", OrderStatusEnum.CREATED).list();
 	}
 
 }

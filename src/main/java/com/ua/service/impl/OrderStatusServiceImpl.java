@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ua.dao.OrderStatusDao;
 import com.ua.entity.OrderStatus;
+import com.ua.entity.enums.OrderStatusEnum;
 import com.ua.service.OrderStatusService;
 
 @Transactional
@@ -46,6 +47,12 @@ public class OrderStatusServiceImpl implements OrderStatusService{
 	public List<OrderStatus> findAll() {
 		
 		return orderStatusDao.findAll();
+	}
+
+	@Override
+	public OrderStatus getOrderStatusByEnum(OrderStatusEnum orderStatusEnum) {
+		
+		return orderStatusDao.getOrderStatusByEnum(orderStatusEnum);
 	}
 
 }

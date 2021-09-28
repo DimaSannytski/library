@@ -16,7 +16,7 @@ public interface UserMapper {
 		user.setSex(registerDto.getSex());
 		user.setPassword(registerDto.getPassword());
 		user.setActivated(true);
-		user.setRole(Role.USER);
+		user.setRole(Role.ROLE_USER);
 		
 		return user;
 		
