@@ -23,6 +23,7 @@ public interface BookMapper {
 	
 	public static BookCreateDto getEdtBookModel(Book book) {
 		BookCreateDto bookCreateDto = new BookCreateDto();
+		bookCreateDto.setId(book.getId());
 		if (book.getBookAuthor() != null) {
 			bookCreateDto.setAuthorId(book.getBookAuthor().getId());
 		}
@@ -41,13 +42,13 @@ public interface BookMapper {
 	public static void updateDtoToBook(BookCreateDto bookCreateDto, AuthorService authorService, 
 			GenreService genreService, Book book){
 		
-		book.setId(bookCreateDto.getId());
+		
 		book.setTitle(bookCreateDto.getTitle());
 		book.setDescription(bookCreateDto.getDescription());
 		book.setPublicationDate(bookCreateDto.getPublicationDate());
 		book.setBookAuthor(authorService.getAuthorById(bookCreateDto.getAuthorId()));
 		book.setGenre(genreService.getGenreById(bookCreateDto.getGenreId()));
-
+		//return book;
 	}
 	public static BookDto bookToDto(Book book) {
 		

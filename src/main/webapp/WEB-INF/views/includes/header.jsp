@@ -6,9 +6,7 @@
 <meta charset="UTF-8">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+	rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -16,6 +14,7 @@
 		<ul class="nav nav-pills">
 <li class="nav-item"><a href="/auth" class="nav-link "> Реєстрація</a></li>
 <li class="nav-item"><a href="/login" class="nav-link "> Увійти</a></li>
+<li class="nav-item"><a href="/user" class="nav-link "> Сторінка користувача</a></li>
 <li class="nav-item"><a href="/bookauthor/all" class="nav-link "> Автори</a></li>
 <li class="nav-item"><a href="/book/all" class="nav-link "> Книги</a></li>
 

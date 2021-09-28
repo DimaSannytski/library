@@ -24,20 +24,19 @@
 	<h1>Автори</h1>
 	<a href="/bookauthor/create"> Створити</a>
 	<br>
-	<table class="table table-hover table-bordered">
-	<c:forEach items="${authors}" var="author">
-		<tr>
-				 <td>
-		<div style="margin-left: 60px;">
-			<a href="/bookauthor/${author.id}">
-					${author.firstName} ${author.lastName} </a>
+		<table class="table table-hover table-bordered">
+			<c:forEach items="${authors}" var="author">
 
-		</div>
-		</td>
-		</tr>
-	</c:forEach>
-	
-	</table>
+				<tr>
+					<td><a href="/bookauthor/${author.id}">
+							${author.firstName} </a></td>
+				
+					<td>${author.lastName}</td>
+				</tr>
+
+			</c:forEach>
+
+		</table>
 	</div>
 </body>
 </html>

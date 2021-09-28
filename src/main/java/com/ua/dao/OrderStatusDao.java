@@ -3,6 +3,7 @@ package com.ua.dao;
 import java.util.List;
 
 import com.ua.entity.OrderStatus;
+import com.ua.entity.enums.OrderStatusEnum;
 
 public interface OrderStatusDao {
 
@@ -11,4 +12,6 @@ public interface OrderStatusDao {
 	OrderStatus getOrderStatusById(Long id);
 	void deleteById(Long id);
 	List<OrderStatus> findAll();
+	
+	OrderStatus getOrderStatusByEnum(OrderStatusEnum orderStatusEnum);
 }

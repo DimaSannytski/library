@@ -44,4 +44,7 @@ public class Book extends BaseEntity{
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "book")
 	private List<BookCopy> bookCopies = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "book")
+	private List<BookOrder> bookOrders = new ArrayList<>();
 }

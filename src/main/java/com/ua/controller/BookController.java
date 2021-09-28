@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ua.dto.BookCreateDto;
+import com.ua.dto.CountDto;
 import com.ua.dto.SearchByOneFieldDto;
 import com.ua.entity.Book;
 import com.ua.mapper.BookMapper;
@@ -92,25 +93,45 @@ public class BookController {
 		if (book == null) return "redirect:/book/all";
 		
 		model.addAttribute("bookModel", BookMapper.getEdtBookModel(book));
+
 		model.addAttribute("authors", authorService.findAll());
 		model.addAttribute("genres", genreService.findAll());
+		
+		model.addAttribute("createCopyModel", new CountDto());
 		
 		return"book/edit";
 	}
 	@PostMapping("/edit")
-	public String editBook(Principal principal,@ModelAttribute("bookModel")@Valid BookCreateDto request,BindingResult result) {
+	public String editBook(@RequestParam("bookId") long bookId, Principal principal,@ModelAttribute("bookModel")@Valid BookCreateDto request,BindingResult result) {
 		
 		if(result.hasErrors()) {
 
-			return "/book/edit" +request.getId() ;
+			return "/book/edit" +bookId;
 		}
 		
-		Book book = bookService.getBookById(request.getId() );
+		Book book = bookService.getBookById(bookId);
 		if (book == null) return "redirect:/book/all";
 		
 		BookMapper.updateDtoToBook(request, authorService, genreService, book);
-		
+
 		bookService.updateBook(book);
+	
+	
+		return "redirect:/book/"+book.getId();
+	}
+	
+	@PostMapping("/createcopy")
+	public String createCopy(@RequestParam("bookId") long bookId, Principal principal,@ModelAttribute("countModel")@Valid CountDto request,BindingResult result) {
+		
+		if(result.hasErrors()) {
+
+			return "/book/edit" +bookId;
+		}
+		
+		Book book = bookService.getBookById(bookId);
+		if (book == null) return "redirect:/book/all";
+		
+		bookService.createBookCopys(book, request.getCount());
 	
 	
 		return "redirect:/book/"+book.getId();

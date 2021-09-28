@@ -12,4 +12,6 @@ public interface BookOrderDao {
 	BookOrder getBookOrderById(Long id);
 	void deleteById(Long id);
 	List<BookOrder> findAll();
+	
+	List<BookOrder> findAllCreatedByUserId(Long id);
 }

@@ -14,16 +14,15 @@
 	<div class="container">
 		<h1>Статуси замовлень</h1>
 		<a href="/orderstatus/create"> Створити</a> <br>
-		<c:forEach items="${orderStatus}" var="orderStat">
+		<table class="table table-hover table-bordered">
+			<c:forEach items="${orderStatus}" var="orderStat">
 
-    <div style="margin-left: 60px;">
-				
-				<span class="left-top">
-						${orderStat.title} </span>
+				<tr>
+					<td><span class="left-top"> ${orderStat.title} </span></td>
+				</tr>
 
-			</div>
-		</c:forEach>
-
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>
