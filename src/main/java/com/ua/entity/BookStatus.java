@@ -5,13 +5,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.ua.entity.enums.BookStatusEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,8 +24,7 @@ public class BookStatus extends BaseEntity{
 
 	private String title;
 	
-	@Enumerated(EnumType.STRING)
-	private BookStatusEnum bookStatusEnum;
+
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bookStatus")
 	private List<BookCopy> bookCopies = new ArrayList<>();

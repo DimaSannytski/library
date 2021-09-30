@@ -1,18 +1,23 @@
 package com.ua.controller;
 
-import com.ua.dto.OrderStatusDto;
-import com.ua.entity.OrderStatus;
-import com.ua.mapper.OrderStatusMapper;
-import com.ua.service.OrderStatusService;
+import java.security.Principal;
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
-import java.security.Principal;
-import java.util.List;
+import com.ua.dto.OrderStatusDto;
+import com.ua.entity.OrderStatus;
+import com.ua.mapper.OrderStatusMapper;
+import com.ua.service.OrderStatusService;
 
 @Controller
 @RequestMapping("/orderstatus")
@@ -44,15 +49,5 @@ public class OrderStatusController {
         return "redirect:/orderstatus/all";
     }
 
-//    @GetMapping("/{orderStatusId}")
-//    public String showOneGroup(@PathVariable("orderStatusId") long orderStatusId, Principal principal, Model model) {
-//        OrderStatus orderStatus = orderStatusService.getOrderStatusById(orderStatusId);
-//
-//        if (orderStatus == null) return "redirect:/orderstatus/all";
-//
-//        model.addAttribute("orderStatusModel", OrderStatusMapper.orderStatusDto(orderStatus));
-//
-//        return"/orderstatus/orderstatus";
-//    }
 
 }

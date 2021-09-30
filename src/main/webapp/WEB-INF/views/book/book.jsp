@@ -16,11 +16,11 @@
 		${bookModel.authorFirstName} ${bookModel.authorLastName} <br>
 		Жанр: ${bookModel.genre} <br> В наявності:
 		${bookModel.availableCopys} <br>
+	
 		<sec:authorize access="hasRole('USER') or hasRole('ADMIN')">
 			<a href="/book/edit/${bookModel.id}"> Редагувати</a>
 		</sec:authorize>
-		<br>
-		<a href="/book/edit/${bookModel.id}"> Редагувати</a>
+
 		<br>
 		<c:if test="${bookModel.availableCopys > 0}">
 

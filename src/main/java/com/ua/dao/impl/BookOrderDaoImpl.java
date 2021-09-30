@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ua.dao.BookOrderDao;
 import com.ua.entity.BookOrder;
-import com.ua.entity.enums.OrderStatusEnum;
 
 @Repository
 public class BookOrderDaoImpl implements BookOrderDao{
@@ -60,10 +59,17 @@ public class BookOrderDaoImpl implements BookOrderDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<BookOrder> findAllCreatedByUserId(Long id) {
-		System.out.println(OrderStatusEnum.CREATED.toString());
-		return  getSessionFactory().createQuery("SELECT u FROM BookOrder u WHERE u.reader.id = :id and u.orderStatus.orderStatusEnum = :status")
-				.setParameter("id", id).setParameter("status", OrderStatusEnum.CREATED).list();
+	public List<BookOrder> findAllByStatusIdByUserId(Long id, Long statusId) {
+	
+		return  getSessionFactory().createQuery("SELECT u FROM BookOrder u WHERE u.reader.id = :id and u.orderStatus.id = :statusid")
+				.setParameter("id", id).setParameter("statusid", statusId).list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BookOrder> findAllByStatusId(long statusId) {
+		return  getSessionFactory().createQuery("SELECT u FROM BookOrder u WHERE u.orderStatus.id = :statusid")
+				.setParameter("statusid", statusId).list();
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ua.constants.OrderStatusConst;
 import com.ua.entity.User;
 import com.ua.service.BookOrderService;
 import com.ua.service.UserService;
@@ -27,7 +28,7 @@ public class UserController {
 		User user = userService.findByEmail(principal.getName());
 		if (user == null) return "redirect:/login/";
 		
-		model.addAttribute("createdOrders", bookOrderService.findAllCreatedByUserId(user.getId()));
+		model.addAttribute("createdOrders", bookOrderService.findAllByStatusIdByUserId(user.getId(), OrderStatusConst.CREATED));
 		
 		return "/user/page";
 	}
