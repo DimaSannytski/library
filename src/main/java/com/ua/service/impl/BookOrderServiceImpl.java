@@ -7,11 +7,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ua.constants.OrderStatusConst;
 import com.ua.dao.BookOrderDao;
 import com.ua.entity.Book;
 import com.ua.entity.BookOrder;
 import com.ua.entity.User;
-import com.ua.entity.enums.OrderStatusEnum;
 import com.ua.service.BookOrderService;
 import com.ua.service.OrderStatusService;
 
@@ -58,14 +58,19 @@ public class BookOrderServiceImpl implements BookOrderService{
 		BookOrder bookOrder = new BookOrder();
 		bookOrder.setBook(book);
 		bookOrder.setReader(user);
-		bookOrder.setOrderStatus(orderStatusService.getOrderStatusByEnum(OrderStatusEnum.CREATED));
+		bookOrder.setOrderStatus(orderStatusService.getOrderStatusById(OrderStatusConst.CREATED));
 		bookOrderDao.saveBookOrder(bookOrder);
 	}
 
 	@Override
-	public List<BookOrder> findAllCreatedByUserId(Long id) {
+	public List<BookOrder> findAllByStatusIdByUserId(Long userid, Long statusId) {
 		
-		return bookOrderDao.findAllCreatedByUserId(id);
+		return bookOrderDao.findAllByStatusIdByUserId(userid, statusId);
+	}
+
+	@Override
+	public List<BookOrder> findAllByStatusId(long statusId) {
+		return bookOrderDao.findAllByStatusId(statusId);
 	}
 
 }

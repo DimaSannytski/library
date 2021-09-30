@@ -15,5 +15,8 @@ public interface BookOrderService {
 	List<BookOrder> findAll();
 	
 	void createOrder(Book book, User user);
-	List<BookOrder> findAllCreatedByUserId(Long id);
+	
+	List<BookOrder> findAllByStatusIdByUserId(Long userId, Long statusId);
+	
+	List<BookOrder> findAllByStatusId(long statusId);
 }

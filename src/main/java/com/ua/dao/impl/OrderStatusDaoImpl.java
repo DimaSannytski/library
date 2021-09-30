@@ -3,8 +3,6 @@ package com.ua.dao.impl;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.NoResultException;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ua.dao.OrderStatusDao;
 import com.ua.entity.OrderStatus;
-import com.ua.entity.enums.OrderStatusEnum;
 
 @Repository
 public class OrderStatusDaoImpl implements OrderStatusDao{
@@ -60,14 +57,14 @@ public class OrderStatusDaoImpl implements OrderStatusDao{
 		return getSessionFactory().createQuery("from OrderStatus").list();
 	}
 
-	@Override
-	public OrderStatus getOrderStatusByEnum(OrderStatusEnum orderStatusEnum) {
-		try {
-			return (OrderStatus) getSessionFactory().createQuery("SELECT u FROM OrderStatus u WHERE u.orderStatusEnum = :orderStatusEnum")
-					.setParameter("orderStatusEnum", orderStatusEnum).getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
-	}
+//	@Override
+//	public OrderStatus getOrderStatusByEnum(OrderStatusEnum orderStatusEnum) {
+//		try {
+//			return (OrderStatus) getSessionFactory().createQuery("SELECT u FROM OrderStatus u WHERE u.orderStatusEnum = :orderStatusEnum")
+//					.setParameter("orderStatusEnum", orderStatusEnum).getSingleResult();
+//		} catch (NoResultException e) {
+//			return null;
+//		}
+//	}
 
 }

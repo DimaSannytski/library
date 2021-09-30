@@ -13,5 +13,7 @@ public interface BookOrderDao {
 	void deleteById(Long id);
 	List<BookOrder> findAll();
 	
-	List<BookOrder> findAllCreatedByUserId(Long id);
+	List<BookOrder> findAllByStatusIdByUserId(Long userId, Long statusId);
+	
+	List<BookOrder> findAllByStatusId(long statusId);
 }
