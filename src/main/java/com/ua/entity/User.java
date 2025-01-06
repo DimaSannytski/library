@@ -27,12 +27,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "person", indexes =  @Index(columnList = "email,firstName"))
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
 	private String firstName;
-	
 	private String lastName;
-	
 	private String password;
 
 	@Column(name = "email", unique = true)
@@ -51,6 +49,5 @@ public class User extends BaseEntity{
 	private Role role;
 	
 	private boolean isActivated;
-	
 	private Date birthday;
 }

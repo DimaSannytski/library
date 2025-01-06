@@ -12,7 +12,6 @@ import javax.validation.Payload;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = CheckPassMatchValidator.class)
 public @interface CheckPassMatch {
-
 	String message() default "Entered passwords not match";
 	Class<?>[] groups() default{};
 	Class<? extends Payload>[] payload() default {};

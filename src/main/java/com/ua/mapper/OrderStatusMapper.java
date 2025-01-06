@@ -4,6 +4,7 @@ import com.ua.dto.OrderStatusDto;
 import com.ua.entity.OrderStatus;
 
 public interface OrderStatusMapper {
+
     public static OrderStatus dtoToOrderStatus(OrderStatusDto orderStatusDto){
         OrderStatus orderStatus = new OrderStatus();
         orderStatus.setTitle(orderStatusDto.getTitle());

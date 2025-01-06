@@ -79,5 +79,4 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		}
 		session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
 	}
-
 }

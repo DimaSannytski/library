@@ -12,7 +12,7 @@ import com.ua.dao.BookDao;
 import com.ua.entity.Book;
 
 @Repository
-public class BookDaoImpl implements BookDao{
+public class BookDaoImpl implements BookDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -26,14 +26,12 @@ public class BookDaoImpl implements BookDao{
 		book.setCreatedAt(new Date());
 		book.setUpdatedAt(new Date());
 		getSessionFactory().save(book);
-		
 	}
 
 	@Override
 	public void updateBook(Book book) {
 		book.setUpdatedAt(new Date());
 		getSessionFactory().update(book);
-		
 	}
 
 	@Override
@@ -47,7 +45,6 @@ public class BookDaoImpl implements BookDao{
 		if (book != null) {
 			getSessionFactory().delete(book);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -59,10 +56,8 @@ public class BookDaoImpl implements BookDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Book> findByTitle(String title) {
-		
 			return  getSessionFactory().createQuery("SELECT u FROM Book u WHERE u.title like :title")
 					.setParameter("title", title).list();
 	
 	}
-
 }

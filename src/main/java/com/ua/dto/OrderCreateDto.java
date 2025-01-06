@@ -10,7 +10,5 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderCreateDto {
-
 	private long bookid;
-	
 }

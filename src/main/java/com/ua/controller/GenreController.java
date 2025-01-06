@@ -28,7 +28,6 @@ public class GenreController {
 
     @GetMapping("/all")
     public String showAllGenres(Principal principal, Model model) {
-
         List<Genre> genres = genreService.findAll();
         model.addAttribute("genres", genres);
         return "/genre/all";
@@ -40,9 +39,10 @@ public class GenreController {
         return "/genre/create";
     }
 
-
     @PostMapping("/create")
-    public String createGenre(Principal principal, @ModelAttribute("createGenre")@Valid GenreDto request, BindingResult result) {
+    public String createGenre(Principal principal, @ModelAttribute("createGenre") @Valid GenreDto request,
+                              BindingResult result) {
+
         if(result.hasErrors()) {
             return "/genre/create";
         }
@@ -50,12 +50,4 @@ public class GenreController {
         genreService.saveGenre(genre);
         return "redirect:/genre/all";
     }
-
-//    @GetMapping("/{genreId}")
-//    public String showOneGenre(@PathVariable("genreId") long genreId,Principal principal,Model model) {
-//        Genre genre = genreService.getGenreById(genreId);
-//        if (genre == null) return "redirect:/genre/all";
-//        model.addAttribute("genreModel", GenreMapper.genreToDto(genre));
-//        return"/genre/genre";
-//    }
 }

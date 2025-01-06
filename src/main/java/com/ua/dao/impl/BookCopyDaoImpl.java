@@ -12,13 +12,12 @@ import com.ua.dao.BookCopyDao;
 import com.ua.entity.BookCopy;
 
 @Repository
-public class BookCopyDaoImpl implements BookCopyDao{
+public class BookCopyDaoImpl implements BookCopyDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public Session getSessionFactory() {
-		
 		return sessionFactory.getCurrentSession();
 	}
 
@@ -27,14 +26,12 @@ public class BookCopyDaoImpl implements BookCopyDao{
 		bookCopy.setCreatedAt(new Date());
 		bookCopy.setUpdatedAt(new Date());
 		getSessionFactory().save(bookCopy);
-		
 	}
 
 	@Override
 	public void updateBookCopy(BookCopy bookCopy) {
 		bookCopy.setUpdatedAt(new Date());
 		getSessionFactory().update(bookCopy);
-		
 	}
 
 	@Override
@@ -48,7 +45,6 @@ public class BookCopyDaoImpl implements BookCopyDao{
 		if (bookCopy != null) {
 			getSessionFactory().delete(bookCopy);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")

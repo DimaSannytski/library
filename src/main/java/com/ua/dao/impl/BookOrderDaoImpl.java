@@ -12,13 +12,12 @@ import com.ua.dao.BookOrderDao;
 import com.ua.entity.BookOrder;
 
 @Repository
-public class BookOrderDaoImpl implements BookOrderDao{
+public class BookOrderDaoImpl implements BookOrderDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public Session getSessionFactory() {
-		
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -27,14 +26,12 @@ public class BookOrderDaoImpl implements BookOrderDao{
 		bookOrder.setCreatedAt(new Date());
 		bookOrder.setUpdatedAt(new Date());
 		getSessionFactory().save(bookOrder);
-		
 	}
 
 	@Override
 	public void updateBookOrder(BookOrder bookOrder) {
 		bookOrder.setUpdatedAt(new Date());
 		getSessionFactory().update(bookOrder);
-		
 	}
 
 	@Override
@@ -48,7 +45,6 @@ public class BookOrderDaoImpl implements BookOrderDao{
 		if (bookOrder != null) {
 			getSessionFactory().delete(bookOrder);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -60,7 +56,6 @@ public class BookOrderDaoImpl implements BookOrderDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<BookOrder> findAllByStatusIdByUserId(Long id, Long statusId) {
-	
 		return  getSessionFactory().createQuery("SELECT u FROM BookOrder u WHERE u.reader.id = :id and u.orderStatus.id = :statusid")
 				.setParameter("id", id).setParameter("statusid", statusId).list();
 	}
@@ -71,5 +66,4 @@ public class BookOrderDaoImpl implements BookOrderDao{
 		return  getSessionFactory().createQuery("SELECT u FROM BookOrder u WHERE u.orderStatus.id = :statusid")
 				.setParameter("statusid", statusId).list();
 	}
-
 }

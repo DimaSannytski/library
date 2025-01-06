@@ -13,7 +13,6 @@
 	${authorModel.firstName}
 	<br> ${authorModel.lastName}
 	<br>
-
 </div>
 </body>
 </html>

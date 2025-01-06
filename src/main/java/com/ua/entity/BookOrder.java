@@ -18,7 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "book_order")
-public class BookOrder extends BaseEntity{
+public class BookOrder extends BaseEntity {
 	
 	@Column(name = "return_time")
 	private Date returnTime;

@@ -17,7 +17,7 @@ import com.ua.service.OrderStatusService;
 
 @Transactional
 @Service
-public class BookOrderServiceImpl implements BookOrderService{
+public class BookOrderServiceImpl implements BookOrderService {
 
 	@Autowired
 	BookOrderDao bookOrderDao;
@@ -27,13 +27,11 @@ public class BookOrderServiceImpl implements BookOrderService{
 	@Override
 	public void saveBookOrder(BookOrder bookOrder) {
 		bookOrderDao.saveBookOrder(bookOrder);
-		
 	}
 
 	@Override
 	public void updateBookOrder(BookOrder bookOrder) {
 		bookOrderDao.updateBookOrder(bookOrder);
-		
 	}
 
 	@Override
@@ -44,12 +42,10 @@ public class BookOrderServiceImpl implements BookOrderService{
 	@Override
 	public void deleteById(Long id) {
 		bookOrderDao.deleteById(id);
-		
 	}
 
 	@Override
 	public List<BookOrder> findAll() {
-
 		return bookOrderDao.findAll();
 	}
 
@@ -64,7 +60,6 @@ public class BookOrderServiceImpl implements BookOrderService{
 
 	@Override
 	public List<BookOrder> findAllByStatusIdByUserId(Long userid, Long statusId) {
-		
 		return bookOrderDao.findAllByStatusIdByUserId(userid, statusId);
 	}
 
@@ -72,5 +67,4 @@ public class BookOrderServiceImpl implements BookOrderService{
 	public List<BookOrder> findAllByStatusId(long statusId) {
 		return bookOrderDao.findAllByStatusId(statusId);
 	}
-
 }

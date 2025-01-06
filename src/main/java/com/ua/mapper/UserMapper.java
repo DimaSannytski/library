@@ -7,7 +7,6 @@ import com.ua.entity.enums.Role;
 public interface UserMapper {
 
 	public static User userRegister(RegisterDto registerDto) {
-		
 		User user = new User();
 		user.setFirstName(registerDto.getFirstName());
 		user.setLastName(registerDto.getLastName());
@@ -17,8 +16,6 @@ public interface UserMapper {
 		user.setPassword(registerDto.getPassword());
 		user.setActivated(true);
 		user.setRole(Role.ROLE_USER);
-		
 		return user;
-		
 	}
 }

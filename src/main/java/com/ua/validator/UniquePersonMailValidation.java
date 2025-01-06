@@ -20,7 +20,4 @@ public class UniquePersonMailValidation implements ConstraintValidator<UniquePer
 		if (value == null) return false;
 		return userService.findByEmail(value.toLowerCase()) == null;
 	}
-
-
-
 }

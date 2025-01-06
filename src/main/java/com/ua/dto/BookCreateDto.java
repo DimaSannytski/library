@@ -8,19 +8,12 @@ import lombok.Data;
 
 @Data
 public class BookCreateDto {
-
 	private long id;
-	
 	private String title;
-	
 	private String description;
-	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date publicationDate;
-	
 	private long authorId;
-	
 	private long genreId;
-	
 	private int copyCount;
 }

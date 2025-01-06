@@ -3,22 +3,6 @@ package com.ua.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-	//implements WebApplicationInitializer
-//	public void onStartup(ServletContext servletContext)
-//			throws ServletException {
-//		
-//		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-//		ctx.register(WebAppConfig.class);
-//		servletContext.addListener(new ContextLoaderListener(ctx));
-//		
-//		ctx.setServletContext(servletContext);
-//		
-//		Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
-//		servlet.addMapping("/");
-//		servlet.setLoadOnStartup(1);
-//		
-//		
-//	}
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -34,5 +18,4 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
 	}
-
 }

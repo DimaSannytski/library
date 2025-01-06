@@ -23,15 +23,12 @@ public class UserController {
 	@Autowired BookOrderService bookOrderService;
 	
 	@GetMapping
-	public String userPage(Principal principal,Model model) {
-		
+	public String userPage(Principal principal, Model model) {
 		User user = userService.findByEmail(principal.getName());
 		if (user == null) return "redirect:/login/";
-		
-		model.addAttribute("createdOrders", bookOrderService.findAllByStatusIdByUserId(user.getId(), OrderStatusConst.CREATED));
-		
+		model.addAttribute("createdOrders", bookOrderService.findAllByStatusIdByUserId(user.getId(),
+				OrderStatusConst.CREATED));
+
 		return "/user/page";
 	}
-	
-
 }

@@ -24,12 +24,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "book", indexes = @Index(columnList = "title"))
-public class Book extends BaseEntity{
+public class Book extends BaseEntity {
 
 	private String  title;
-	
 	private String description;
-	
 	private Date publicationDate;
 	
 	@ManyToOne

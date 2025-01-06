@@ -12,13 +12,12 @@ import com.ua.dao.GenreDao;
 import com.ua.entity.Genre;
 
 @Repository
-public class GenreDaoImpl implements GenreDao{
+public class GenreDaoImpl implements GenreDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public Session getSessionFactory() {
-		
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -27,14 +26,12 @@ public class GenreDaoImpl implements GenreDao{
 		genre.setCreatedAt(new Date());
 		genre.setUpdatedAt(new Date());
 		getSessionFactory().save(genre);
-		
 	}
 
 	@Override
 	public void updateGenre(Genre genre) {
 		genre.setUpdatedAt(new Date());
 		getSessionFactory().update(genre);
-		
 	}
 
 	@Override
@@ -48,7 +45,6 @@ public class GenreDaoImpl implements GenreDao{
 		if (genre != null) {
 			getSessionFactory().delete(genre);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,5 +52,4 @@ public class GenreDaoImpl implements GenreDao{
 	public List<Genre> findAll() {
 		return getSessionFactory().createQuery("from Genre").list();
 	}
-
 }

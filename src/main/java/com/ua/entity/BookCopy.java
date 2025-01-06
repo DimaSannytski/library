@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "book_copy")
-public class BookCopy extends BaseEntity{
+public class BookCopy extends BaseEntity {
 	
 	@ManyToOne
 	private Book book;

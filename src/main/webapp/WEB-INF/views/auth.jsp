@@ -10,7 +10,6 @@
 </head>
 <body>
  <%@include file="/WEB-INF/views/includes/header.jsp" %>
-
 	<div class="container">
 	<div class="p-3 border bg-light">
 	<form:form action="/auth" method="POST"
@@ -18,7 +17,6 @@
 		<br>
 		<h1 style="text-align: center; color: #464646">Реєстрація</h1>
 		<br>
-	
 		<div class="input-group mb-3">
 		<form:input type="email"
 			pattern="[a-zA-Z0-9_]+(?:\.[A-Za-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?!([a-zA-Z0-9]*\.[a-zA-Z0-9]*\.[a-zA-Z0-9]*\.))(?:[A-Za-z0-9](?:[a-zA-Z0-9-]*[A-Za-z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?"
@@ -29,12 +27,10 @@
 		<form:input type="text" placeholder="Ім'я" path="firstName"
 			pattern="[A-Za-z]{2,}" name="userLogin" /> </div>
 		<form:errors path="firstName" cssClass="error" />
-		
 		<div class="input-group mb-3">
 		<form:input type="text" placeholder="Прізвище" path="lastName"
 			pattern="[A-Za-z]{2,}" name="userLogin" /></div>
 		<form:errors path="lastName" cssClass="error" />
-		
 		<div class="input-group mb-3">
 		<form:select path="sex">
 			<c:forEach items="${sexs}" var="sex">
@@ -53,10 +49,7 @@
 			id="password" name="userPass1"
 			pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
 			path="passwordConfirm" /></div>
-		
 		<button id="register" class="btn btn-outline-success">Реєстрація</button>
-
-
 	</form:form>
 	</div>
 	</div>

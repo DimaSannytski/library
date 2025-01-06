@@ -13,7 +13,7 @@ import com.ua.service.BookStatusService;
 
 @Transactional
 @Service
-public class BookStatusServiceImpl implements BookStatusService{
+public class BookStatusServiceImpl implements BookStatusService {
 
 	@Autowired
 	BookStatusDao bookStatusDao;
@@ -21,31 +21,25 @@ public class BookStatusServiceImpl implements BookStatusService{
 	@Override
 	public void saveBookStatus(BookStatus bookStatus) {
 		bookStatusDao.saveBookStatus(bookStatus);
-		
 	}
 
 	@Override
 	public void updateBookStatus(BookStatus bookStatus) {
 		bookStatusDao.updateBookStatus(bookStatus);
-		
 	}
 
 	@Override
 	public BookStatus getBookStatusById(Long id) {
-
 		return bookStatusDao.getBookStatusById(id);
 	}
 
 	@Override
 	public void deleteById(Long id) {
 		bookStatusDao.deleteById(id);
-		
 	}
 
 	@Override
 	public List<BookStatus> findAll() {
-	
 		return bookStatusDao.findAll();
 	}
-
 }

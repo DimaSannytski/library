@@ -9,12 +9,10 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
-
 	<div class="container">
 		<div class="p-3 border bg-light">
 			<form:form method="POST" action="/book/create/"
 				modelAttribute="createBook">
-				
 				<div class="input-group mb-3">
 				<span class="input-group-text" id="inputGroup-sizing-small">Назва</span>
 					<form:input type="text" placeholder="Назва" path="title" />
@@ -38,7 +36,6 @@
 						</c:forEach>
 					</form:select>
 				</div>
-				
 					<div class="input-group mb-3">
 					<span class="input-group-text" id="inputGroup-sizing-small">Жанр</span>
 					<form:select path="genreId">

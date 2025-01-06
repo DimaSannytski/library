@@ -11,7 +11,6 @@
 	<div class="container">
 		<h1>Статуси книжок</h1>
 		<a href="/bookstatus/create"> Створити</a> <br>
-
 		<table class="table table-hover table-bordered">
 			<c:forEach items="${bookStatus}" var="bookStatus">
 				<tr>

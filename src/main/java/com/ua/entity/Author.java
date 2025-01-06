@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "author", indexes =  @Index(columnList = "lastName,firstName"))
-public class Author extends BaseEntity{
+public class Author extends BaseEntity {
 	
 	private String firstName;
 	private String lastName;
@@ -34,6 +34,7 @@ public class Author extends BaseEntity{
 		joinColumns = {@JoinColumn(name = "author_id")},
 		inverseJoinColumns = {@JoinColumn(name = "book_id")}
 		)
+
 	private List<Book> co_bookList = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "bookAuthor", cascade = CascadeType.ALL)

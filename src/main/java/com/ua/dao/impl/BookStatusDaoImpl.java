@@ -12,13 +12,12 @@ import com.ua.dao.BookStatusDao;
 import com.ua.entity.BookStatus;
 
 @Repository
-public class BookStatusDaoImpl implements BookStatusDao{
+public class BookStatusDaoImpl implements BookStatusDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public Session getSessionFactory() {
-		
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -27,14 +26,12 @@ public class BookStatusDaoImpl implements BookStatusDao{
 		bookStatus.setCreatedAt(new Date());
 		bookStatus.setUpdatedAt(new Date());
 		getSessionFactory().save(bookStatus);
-		
 	}
 
 	@Override
 	public void updateBookStatus(BookStatus bookStatus) {
 		bookStatus.setUpdatedAt(new Date());
 		getSessionFactory().update(bookStatus);
-		
 	}
 
 	@Override
@@ -48,7 +45,6 @@ public class BookStatusDaoImpl implements BookStatusDao{
 		if (bookStatus != null) {
 			getSessionFactory().delete(bookStatus);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,5 +52,4 @@ public class BookStatusDaoImpl implements BookStatusDao{
 	public List<BookStatus> findAll() {
 		return getSessionFactory().createQuery("from BookStatus").list();
 	}
-
 }

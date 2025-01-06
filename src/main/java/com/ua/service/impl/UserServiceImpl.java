@@ -24,13 +24,11 @@ public class UserServiceImpl implements UserService {
 	public void save(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDao.saveUser(user);
-		
 	}
 
 	@Override
 	public void update(User user) {
 		userDao.updateUser(user);
-		
 	}
 
 	@Override
@@ -41,12 +39,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteById(Long id) {
 		userDao.deleteById(id);
-		
 	}
 
 	@Override
 	public List<User> findAll() {
-
 		return userDao.findAll();
 	}
 
@@ -54,7 +50,4 @@ public class UserServiceImpl implements UserService {
 	public User findByEmail(String email) {
 		return userDao.findByEmail(email);
 	}
-
-
-
 }

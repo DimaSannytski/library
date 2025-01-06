@@ -11,13 +11,12 @@ import org.springframework.stereotype.Repository;
 import com.ua.dao.AuthorDao;
 import com.ua.entity.Author;
 @Repository
-public class AuthorDaoImpl implements AuthorDao{
+public class AuthorDaoImpl implements AuthorDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public Session getSessionFactory() {
-		
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -26,19 +25,16 @@ public class AuthorDaoImpl implements AuthorDao{
 		author.setCreatedAt(new Date());
 		author.setUpdatedAt(new Date());
 		getSessionFactory().save(author);
-		
 	}
 
 	@Override
 	public void updateAuthor(Author author) {
 		author.setUpdatedAt(new Date());
 		getSessionFactory().update(author);
-		
 	}
 
 	@Override
 	public Author getAuthorById(Long id) {
-
 		return (Author) getSessionFactory().get(Author.class, id);
 	}
 
@@ -48,13 +44,11 @@ public class AuthorDaoImpl implements AuthorDao{
 		if (author != null) {
 			getSessionFactory().delete(author);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Author> findAll() {
-
 		return getSessionFactory().createQuery("from Author").list();
 	}
 
@@ -64,5 +58,4 @@ public class AuthorDaoImpl implements AuthorDao{
 		return getSessionFactory().createQuery("SELECT u FROM Author u WHERE u.firstName like :name or u.lastName like :name")
 		.setParameter("name", name).list();
 	}
-
 }

@@ -15,7 +15,6 @@
            <div class="input-group mb-3">
     <form:input type="text" placeholder=" Статус" path="title" />
     </div>
-
     <button class="btn btn-outline-success">Створити</button>
 </form:form>
 

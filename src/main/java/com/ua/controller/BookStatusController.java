@@ -35,7 +35,9 @@ public class BookStatusController {
     }
 
     @PostMapping("/create")
-    public String createBookStatus(Principal principal, @ModelAttribute("createBookStatus")@Valid BookStatusDto request, BindingResult result) {
+    public String createBookStatus(Principal principal, @ModelAttribute("createBookStatus") @Valid BookStatusDto request,
+                                   BindingResult result) {
+
         if(result.hasErrors()) {
             return "/bookstatus/create";
         }
@@ -43,17 +45,4 @@ public class BookStatusController {
         bookStatusService.saveBookStatus(bookStatus);
         return "redirect:/bookstatus/all";
     }
-
-//    @GetMapping("/{bookStatusId}")
-//    public String showOne(@PathVariable("bookStatusId") long bookStatusId, Principal principal, Model model) {
-//        BookStatus bookStatus = bookStatusService.getBookStatusById(bookStatusId);
-//
-//        if (bookStatus == null) return "redirect:/bookstatus/all";
-//
-//        model.addAttribute("bookStatusModel", BookStatusMapper.bookStatusToDto(bookStatus));
-//
-//        return"/bookstatus/bookstatus";
-//    }
-
-
 }

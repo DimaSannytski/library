@@ -16,8 +16,6 @@ public interface BookMapper {
 		book.setPublicationDate(bookCreateDto.getPublicationDate());
 		book.setBookAuthor(authorService.getAuthorById(bookCreateDto.getAuthorId()));
 		book.setGenre(genreService.getGenreById(bookCreateDto.getGenreId()));
-
-		
 		return book;
 	}
 	
@@ -33,43 +31,32 @@ public interface BookMapper {
 		bookCreateDto.setTitle(book.getTitle());
 		bookCreateDto.setDescription(book.getDescription());
 		bookCreateDto.setPublicationDate(book.getPublicationDate());
-		
-		
-		
 		return bookCreateDto;
 		
 	}
 	public static void updateDtoToBook(BookCreateDto bookCreateDto, AuthorService authorService, 
 			GenreService genreService, Book book){
-		
-		
+
 		book.setTitle(bookCreateDto.getTitle());
 		book.setDescription(bookCreateDto.getDescription());
 		book.setPublicationDate(bookCreateDto.getPublicationDate());
 		book.setBookAuthor(authorService.getAuthorById(bookCreateDto.getAuthorId()));
 		book.setGenre(genreService.getGenreById(bookCreateDto.getGenreId()));
-		//return book;
 	}
 	public static BookDto bookToDto(Book book) {
-		
 		BookDto bookDto = new BookDto();
 		bookDto.setTitle(book.getTitle());
 		bookDto.setDescription(book.getDescription());
 		bookDto.setPublicationDate(book.getPublicationDate());
-		
 		if(book.getBookAuthor() != null) {
 			bookDto.setAuthorFirstName(book.getBookAuthor().getFirstName());
 			bookDto.setAuthorLastName(book.getBookAuthor().getLastName());
 		}
-		
 		if (book.getGenre() != null) {
 			bookDto.setGenre(book.getGenre().getTitle());
 		}
-
 		bookDto.setId(book.getId());
-		
 		bookDto.setAvailableCopys(book.getBookCopies().size());
-		
 		return bookDto;
 	}
 }

@@ -20,14 +20,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "order_status", indexes = @Index(columnList = "title"))
-public class OrderStatus extends BaseEntity{
+public class OrderStatus extends BaseEntity {
 
 	private String title;
-	
 
-	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "orderStatus")
 	private List<BookOrder> bookOrders  = new ArrayList<>();
-	
-
 }

@@ -13,7 +13,7 @@ import com.ua.service.BookCopyService;
 
 @Transactional
 @Service
-public class BookCopyServiceImpl implements BookCopyService{
+public class BookCopyServiceImpl implements BookCopyService {
 
 	@Autowired
 	BookCopyDao bookCopyDao;
@@ -21,31 +21,25 @@ public class BookCopyServiceImpl implements BookCopyService{
 	@Override
 	public void saveBookCopy(BookCopy bookCopy) {
 		bookCopyDao.saveBookCopy(bookCopy);
-		
 	}
 
 	@Override
 	public void updateBookCopy(BookCopy bookCopy) {
 		bookCopyDao.updateBookCopy(bookCopy);
-		
 	}
 
 	@Override
 	public BookCopy getBookCopyById(Long id) {
-
 		return bookCopyDao.getBookCopyById(id);
 	}
 
 	@Override
 	public void deleteById(Long id) {
 		bookCopyDao.deleteById(id);
-		
 	}
 
 	@Override
 	public List<BookCopy> findAll() {
-
 		return bookCopyDao.findAll();
 	}
-
 }

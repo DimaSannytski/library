@@ -15,10 +15,8 @@ public interface AuthorMapper {
 	
 	public static AuthorDto authorToDto(Author author) {
 		AuthorDto authorDto = new AuthorDto();
-		
 		authorDto.setFirstName(author.getFirstName());
 		authorDto.setLastName(author.getLastName());
-		
 		return authorDto;
 	}
 }

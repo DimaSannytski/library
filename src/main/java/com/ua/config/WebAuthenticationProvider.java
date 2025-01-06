@@ -14,17 +14,15 @@ import lombok.SneakyThrows;
 
 @Component
 public class WebAuthenticationProvider implements AuthenticationProvider {
-	@Autowired
+
+    @Autowired
     private UserDetailsService userService;
 	@Autowired
     private PasswordEncoder passwordEncoder;
 
-
-
     @SneakyThrows
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
         String username = authentication.getName();
         System.out.println(username);
         String password = authentication.getCredentials().toString();

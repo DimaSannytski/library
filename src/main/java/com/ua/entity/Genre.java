@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "genre", indexes = @Index(columnList = "title"))
-public class Genre extends BaseEntity{
+public class Genre extends BaseEntity {
 	
 	private String title;
 	

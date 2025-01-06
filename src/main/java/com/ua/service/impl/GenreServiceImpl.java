@@ -13,7 +13,7 @@ import com.ua.service.GenreService;
 
 @Transactional
 @Service
-public class GenreServiceImpl implements GenreService{
+public class GenreServiceImpl implements GenreService {
 
 	@Autowired
 	GenreDao genreDao;
@@ -21,31 +21,25 @@ public class GenreServiceImpl implements GenreService{
 	@Override
 	public void saveGenre(Genre genre) {
 		genreDao.saveGenre(genre);
-		
 	}
 
 	@Override
 	public void updateGenre(Genre genre) {
 		genreDao.updateGenre(genre);
-		
 	}
 
 	@Override
 	public Genre getGenreById(Long id) {
-
 		return genreDao.getGenreById(id);
 	}
 
 	@Override
 	public void deleteById(Long id) {
 		genreDao.deleteById(id);
-		
 	}
 
 	@Override
 	public List<Genre> findAll() {
-	
 		return genreDao.findAll();
 	}
-
 }

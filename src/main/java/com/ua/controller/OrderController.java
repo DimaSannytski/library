@@ -31,15 +31,9 @@ public class OrderController {
 	public String createOrder(Principal principal, @RequestParam("id") long id) {
 		System.out.println("1");
 		Book book = bookService.getBookById(id);
-		
 		User user = userService.findByEmail(principal.getName());
-		
 		if (book == null || user == null) return "redirect:/book/" + id;
-		
 		bookOrderService.createOrder(book, user);
-		
 		return "redirect:/user/";
 	}
-	
-
 }

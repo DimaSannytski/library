@@ -29,13 +29,13 @@ public class AuthorizeController {
 	@Autowired
 	UserService userService;
 
-
 	@GetMapping({"/auth"})
 	public String showRegister(Model model) {
 		model.addAttribute("registerModel", new RegisterDto());
 		model.addAttribute("sexs",Sex.values());
 		return "auth";
 	}
+
 	@PostMapping("/auth")
 	public String createUser(@ModelAttribute("registerModel") @Valid RegisterDto registerDto,
 			BindingResult result) {
@@ -43,9 +43,7 @@ public class AuthorizeController {
 		if(result.hasErrors()) {
 			return "/auth";
 		}
-
 		userService.save(UserMapper.userRegister(registerDto));
-
 		return "redirect:/login";
 	}
 	
@@ -53,11 +51,10 @@ public class AuthorizeController {
 	public String showLogin() {
 		return "login";
 	}
-	
 
 	@GetMapping("/logout")
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    System.out.println("------------------logaut--------------");
 	   if (auth != null){    
 	       new SecurityContextLogoutHandler().logout(request, response, auth);
@@ -66,11 +63,8 @@ public class AuthorizeController {
 	}
 	@GetMapping("/isAvalible")
 	public String tryLogin(Principal principal) {
-		
 		User  user = userService.findByEmail(principal.getName());
-	
 		if(user == null) return "redirect:/logout";
-		
 		return "redirect:/user";
 	}
 }

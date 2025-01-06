@@ -13,7 +13,7 @@ import com.ua.service.AuthorService;
 
 @Transactional
 @Service
-public class AuthorServiceImpl implements AuthorService{
+public class AuthorServiceImpl implements AuthorService {
 
 	@Autowired
 	AuthorDao authorDao;
@@ -21,13 +21,11 @@ public class AuthorServiceImpl implements AuthorService{
 	@Override
 	public void saveAuthor(Author author) {
 		authorDao.saveAuthor(author);
-		
 	}
 
 	@Override
 	public void updateAuthor(Author author) {
 		authorDao.updateAuthor(author);
-		
 	}
 
 	@Override
@@ -38,7 +36,6 @@ public class AuthorServiceImpl implements AuthorService{
 	@Override
 	public void deleteById(Long id) {
 		authorDao.deleteById(id);
-		
 	}
 
 	@Override
@@ -50,5 +47,4 @@ public class AuthorServiceImpl implements AuthorService{
 	public List<Author> findAllByName(String name) {
 		return authorDao.findAllByName(name);
 	}
-
 }

@@ -12,13 +12,12 @@ import com.ua.dao.OrderStatusDao;
 import com.ua.entity.OrderStatus;
 
 @Repository
-public class OrderStatusDaoImpl implements OrderStatusDao{
+public class OrderStatusDaoImpl implements OrderStatusDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public Session getSessionFactory() {
-		
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -27,14 +26,12 @@ public class OrderStatusDaoImpl implements OrderStatusDao{
 		orderStatus.setCreatedAt(new Date());
 		orderStatus.setUpdatedAt(new Date());
 		getSessionFactory().save(orderStatus);
-		
 	}
 
 	@Override
 	public void updateOrderStatus(OrderStatus orderStatus) {
 		orderStatus.setUpdatedAt(new Date());
 		getSessionFactory().update(orderStatus);
-		
 	}
 
 	@Override
@@ -48,7 +45,6 @@ public class OrderStatusDaoImpl implements OrderStatusDao{
 		if (orderStatus != null) {
 			getSessionFactory().delete(orderStatus);
 		}
-		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,15 +52,4 @@ public class OrderStatusDaoImpl implements OrderStatusDao{
 	public List<OrderStatus> findAll() {
 		return getSessionFactory().createQuery("from OrderStatus").list();
 	}
-
-//	@Override
-//	public OrderStatus getOrderStatusByEnum(OrderStatusEnum orderStatusEnum) {
-//		try {
-//			return (OrderStatus) getSessionFactory().createQuery("SELECT u FROM OrderStatus u WHERE u.orderStatusEnum = :orderStatusEnum")
-//					.setParameter("orderStatusEnum", orderStatusEnum).getSingleResult();
-//		} catch (NoResultException e) {
-//			return null;
-//		}
-//	}
-
 }

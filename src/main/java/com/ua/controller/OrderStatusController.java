@@ -40,7 +40,9 @@ public class OrderStatusController {
     }
 
     @PostMapping("/create")
-    public String createOrderStatus(Principal principal, @ModelAttribute("createOrderStatus")@Valid OrderStatusDto request, BindingResult result) {
+    public String createOrderStatus(Principal principal, @ModelAttribute("createOrderStatus")@Valid OrderStatusDto request,
+                                    BindingResult result) {
+
         if(result.hasErrors()) {
             return "/orderstatus/create";
         }
@@ -48,6 +50,4 @@ public class OrderStatusController {
         orderStatusService.saveOrderStatus(orderStatus);
         return "redirect:/orderstatus/all";
     }
-
-
 }

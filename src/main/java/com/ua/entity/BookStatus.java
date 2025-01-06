@@ -20,12 +20,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "book_status", indexes = @Index(columnList = "title"))
-public class BookStatus extends BaseEntity{
+public class BookStatus extends BaseEntity {
 
 	private String title;
-	
 
-	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bookStatus")
 	private List<BookCopy> bookCopies = new ArrayList<>();
 }

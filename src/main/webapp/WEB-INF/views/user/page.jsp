@@ -9,12 +9,10 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/includes/header.jsp"%>
-
 	<div class="container">
 		<h1>Створені ордери</h1>
 		<table class="table table-hover table-bordered">
 			<c:forEach items="${createdOrders}" var="createdOrder">
-
 				<tr>
 					<td>${createdOrder.id}</td>
 				<td> ${createdOrder.book.title} </td>		

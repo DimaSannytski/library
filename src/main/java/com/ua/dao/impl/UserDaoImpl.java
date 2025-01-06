@@ -14,9 +14,8 @@ import com.ua.dao.UserDao;
 import com.ua.entity.User;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
-	
 	@Autowired
 	SessionFactory sessionFactory;
 	
@@ -29,14 +28,12 @@ public class UserDaoImpl implements UserDao{
 		user.setCreatedAt(new Date());
 		user.setUpdatedAt(new Date());
 		getSessionFactory().save(user);
-		
 	}
 
 	@Override
 	public void updateUser(User user) {
 		user.setUpdatedAt(new Date());
 		getSessionFactory().update(user);
-		
 	}
 
 	@Override
@@ -50,16 +47,13 @@ public class UserDaoImpl implements UserDao{
 		if (user != null) {
 			getSessionFactory().delete(user);
 		}
-		
 	}
 
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
-		
 		return getSessionFactory().createQuery("from User").list();
-		
 	}
 
 	@Override
@@ -71,5 +65,4 @@ public class UserDaoImpl implements UserDao{
 			return null;
 		}
 	}
-
 }

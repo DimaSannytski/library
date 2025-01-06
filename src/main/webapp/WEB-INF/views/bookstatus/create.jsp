@@ -8,7 +8,6 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/includes/header.jsp"%>
-
 <div class="container">
 <div class="p-3 border bg-light">
 <form:form method="POST" action="/bookstatus/create/"
@@ -19,7 +18,6 @@
     <br>
     <button class="btn btn-outline-success">Створити</button>
 </form:form>
-
 </div>
 </div>
 </body>

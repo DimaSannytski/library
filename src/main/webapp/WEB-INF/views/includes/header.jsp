@@ -17,7 +17,6 @@
 <li class="nav-item"><a href="/user" class="nav-link "> Сторінка користувача</a></li>
 <li class="nav-item"><a href="/bookauthor/all" class="nav-link "> Автори</a></li>
 <li class="nav-item"><a href="/book/all" class="nav-link "> Книги</a></li>
-
 <li class="nav-item"><a href="/bookstatus/all" class="nav-link "> Статуси книг</a></li>
 <li class="nav-item"><a href="/genre/all" class="nav-link "> Жанри</a></li>
 <li class="nav-item"><a href="/orderstatus/all" class="nav-link "> Статуси замовлень</a></li>

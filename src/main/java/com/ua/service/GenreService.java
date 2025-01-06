@@ -5,7 +5,6 @@ import java.util.List;
 import com.ua.entity.Genre;
 
 public interface GenreService {
-
 	void saveGenre(Genre genre);
 	void updateGenre(Genre genre);
 	Genre getGenreById(Long id);

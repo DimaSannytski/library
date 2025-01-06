@@ -10,8 +10,5 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreatedOrderDto {
-
 	private long id;
-	
-	//private long 
 }
